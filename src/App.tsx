@@ -15,7 +15,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Esta é a linha que corrige o erro do print */}
+          <Route path="/lp-grupo-dos-cinco" element={<Index />} />
+          
           <Route path="/" element={<Index />} />
+        
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

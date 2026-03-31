@@ -1,10 +1,10 @@
-// src/components/landing/PromoSection.tsx
-import { motion } from "framer-motion";
-import { Car } from "lucide-react";
-import { fadeUp, stagger } from "./AnimatedSection";
+import AnimatedSection from "./00AnimatedSection";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Star, Car } from "lucide-react";
 
 interface PromoProps {
-  isBanner?: boolean;
+  isBanner: boolean;
 }
 
 const PromoSection = ({ isBanner }: PromoProps) => {

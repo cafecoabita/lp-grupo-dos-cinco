@@ -1,43 +1,40 @@
-// src/components/landing/ReviewsSection.tsx
-import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
-import { fadeUp, stagger } from "./AnimatedSection";
+import AnimatedSection from "./00AnimatedSection";
+import { useEffect } from "react";
 
-const reviews = [
-  { name: "Carlos Andrade", role: "Advogado", text: "Ambiente extremamente profissional e silencioso. A localização no Eldorado facilita muito o dia a dia." },
-  { name: "Mariana Silva", role: "Designer", text: "A internet é impecável, nunca tive quedas. O café e a estrutura da cozinha são excelentes diferenciais." },
-  { name: "Roberto Dias", role: "Empresário", text: "Melhor custo-benefício da região. As salas são modernas e transmitem muita credibilidade para os clientes." },
-];
+const ReviewsSection = () => {
+  useEffect(() => {
+    const existingScript = document.querySelector(
+      'script[src="https://elfsightcdn.com/platform.js"]'
+    );
 
-const ReviewsSection = () => (
-  <motion.section
-    className="py-20 md:py-28 px-6"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={stagger}
-  >
-    <div className="max-w-6xl mx-auto">
-      <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-bold text-center mb-16">
-        O que dizem sobre o Coabita
-      </motion.h2>
-      <div className="grid md:grid-cols-3 gap-8">
-        {reviews.map((rev, i) => (
-          <motion.div key={i} variants={fadeUp} className="p-8 bg-background border border-border rounded-2xl shadow-sm relative">
-            <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/10" />
-            <div className="flex gap-1 mb-4">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
-            </div>
-            <p className="font-body text-muted-foreground mb-6 italic">"{rev.text}"</p>
-            <div>
-              <p className="font-bold text-foreground">{rev.name}</p>
-              <p className="text-xs text-primary uppercase tracking-widest">{rev.role}</p>
-            </div>
-          </motion.div>
-        ))}
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://elfsightcdn.com/platform.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  return (
+    <AnimatedSection className="py-20 md:py-28 px-6 bg-background">
+      <div id="reviews" className="max-w-5xl mx-auto text-center">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 text-foreground">
+          O que nossos clientes dizem
+        </h2>
+
+        <p className="text-sm md:text-base text-muted-foreground mb-10 max-w-2xl mx-auto">
+          Avaliações reais do Google Business do Café Coabita Coworking.
+        </p>
+
+        <div className="rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm">
+          <div
+            className="elfsight-app-a67205c0-7fa3-4332-930f-657a872becfe"
+            data-elfsight-app-lazy
+          ></div>
+        </div>
       </div>
-    </div>
-  </motion.section>
-);
+    </AnimatedSection>
+  );
+};
 
 export default ReviewsSection;

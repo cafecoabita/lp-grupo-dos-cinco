@@ -1,24 +1,50 @@
-// src/components/landing/FooterCTASection.tsx
-import { MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import AnimatedSection from "./00AnimatedSection";
 
-const FooterCTASection = () => (
-  <footer className="py-12 px-6 border-t border-border bg-background">
-    <div className="max-w-3xl mx-auto text-center font-body text-sm text-muted-foreground space-y-4">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-        <p className="flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-primary" />
-          Av. José Faria da Rocha, 5614 — Eldorado, Contagem
-        </p>
-        <p className="flex items-center gap-2">
-          <Clock className="w-4 h-4 text-primary" />
-          Seg a Sex, 7h às 19h
-        </p>
-      </div>
-      <p className="pt-6 text-muted-foreground/40 border-t border-border/50">
-        © {new Date().getFullYear()} Café Coabita Coworking.
+declare global {
+  interface Window {
+    gtagSendEvent?: (url: string) => void;
+  }
+}
+
+const WHATSAPP_LINK = "https://wa.me/553121158984/?text=Olá!+Vi+no+site+sua+promoção+da+sala+privativa+Suassuna.+A+sala+ainda+está+disponível?";
+
+const FooterCTA = () => (
+  <AnimatedSection className="bg-primary text-primary-foreground py-20 md:py-28 px-6">
+    <div className="max-w-3xl mx-auto text-center">
+      <p className="text-sm uppercase tracking-[0.25em] opacity-50 mb-6 font-medium">
+        Mês do Consumidor
       </p>
+      <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        Garanta sua sala com
+        <span className="block">50% OFF na entrada</span>
+      </h2>
+      <p className="text-lg opacity-60 mb-10 font-light">
+        Agende uma visita e conheça a Sala Suassuna pessoalmente.
+      </p>
+      <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => {
+          if (typeof window.gtagSendEvent === 'function') {
+            window.gtagSendEvent(WHATSAPP_LINK);
+          }
+        }}
+      >
+        <Button size="lg" variant="secondary" className="text-base px-8 py-6 font-semibold group">
+          Falar no WhatsApp
+          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </Button>
+      </a>
+
+      <div className="mt-16 pt-8 border-t border-primary-foreground/10 text-sm opacity-40 space-y-1">
+        <p className="tracking-[0.2em] uppercase font-medium">Café Coabita Coworking</p>
+        <p>Av. José Faria da Rocha, 5614 — Eldorado, Contagem — MG</p>
+      </div>
     </div>
-  </footer>
+  </AnimatedSection>
 );
 
-export default FooterCTASection;
+export default FooterCTA;

@@ -1,4 +1,4 @@
-import AnimatedSection from "./00AnimatedSection";
+import AnimatedSection from "./AnimatedSection";
 import { MapPin, Train, Building, Clock, Navigation } from "lucide-react";
 
 const LocationSection = () => (

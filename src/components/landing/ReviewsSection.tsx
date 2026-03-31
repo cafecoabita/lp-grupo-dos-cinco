@@ -1,4 +1,4 @@
-import AnimatedSection from "./00AnimatedSection";
+import AnimatedSection from "./AnimatedSection";
 import { useEffect } from "react";
 
 const ReviewsSection = () => {

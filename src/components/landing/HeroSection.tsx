@@ -5,7 +5,7 @@ import { fadeUp, stagger } from "./AnimatedSection";
 const HeroSection = () => (
   <section className="relative min-h-[calc(100vh-40px)] flex items-start justify-center overflow-hidden pt-32">
     <img
-      src="/images/sala-grupo-dos-cinco-03.png"
+      src="/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-03.png"
       alt="Sala Grupo dos Cinco"
       className="absolute inset-0 w-full h-full object-cover"
     />

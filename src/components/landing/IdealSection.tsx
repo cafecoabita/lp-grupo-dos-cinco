@@ -4,12 +4,12 @@ import { Armchair, Snowflake, Shield, Zap, Check, Coffee, Users, Wifi, MapPin, B
 import { fadeUp, stagger } from "./AnimatedSection";
 
 const incluso = [
-  { icon: Armchair, text: "Sala privativa 100% mobiliada" },
+  { icon: Armchair, text: "Sala privativa 100% mobiliada (Mesas, cadeiras e mesinha de café)" },
   { icon: Snowflake, text: "Ar-condicionado" },
   { icon: Shield, text: "Fechadura digital" },
   { icon: Zap, text: "Energia, água e IPTU inclusos" },
   { icon: Check, text: "Limpeza das áreas comuns" },
-  { icon: Coffee, text: "Cozinha compartilhada completa" },
+  { icon: Coffee, text: "Cozinha compartilhada completa (Microondas, geladeira e fogão)" },
   { icon: Users, text: "Banheiros com chuveiro" },
 ];
 

@@ -5,19 +5,19 @@ import { fadeUp, stagger } from "./AnimatedSection";
 
 const photos = [
   {
-    src: "/images/sala-grupo-dos-cinco-03.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-03.png",
     alt: "Layout da Sala Grupo dos Cinco",
     title: "Vista geral do ambiente",
     size: "large",
   },
   {
-    src: "/images/sala-grupo-dos-cinco-04.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-04.png",
     alt: "Vista interna da Sala Grupo dos Cinco",
     title: "Ambiente climatizado e mobiliado",
     size: "small",
   },
   {
-    src: "/images/sala-grupo-dos-cinco-05.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-05.png",
     alt: "Estrutura da Sala Grupo dos Cinco",
     title: "Mesa de reunião e estações de trabalho",
     size: "small",
@@ -43,6 +43,7 @@ const GallerySection = () => {
         variants={stagger}
       >
         <div className="max-w-6xl mx-auto">
+          {/* Título */}
           <motion.h2
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold text-center text-black mb-5"
@@ -50,11 +51,21 @@ const GallerySection = () => {
             Galeria de Fotos
           </motion.h2>
 
+          {/* Subtítulo */}
           <motion.p
             variants={fadeUp}
-            className="text-center text-gray-600 text-base md:text-lg mb-14 max-w-3xl mx-auto"
+            className="text-center text-gray-700 text-base md:text-lg mb-1 max-w-3xl mx-auto font-medium"
           >
             Conheça a estrutura da sala por diferentes ângulos e detalhes do ambiente.
+          </motion.p>
+
+          {/* Texto de apoio (mais próximo do subtítulo) */}
+          <motion.p
+            variants={fadeUp}
+            className="text-center text-gray-500 text-[14px] mb-10 max-w-4xl mx-auto leading-relaxed"
+          >
+            Imagens ilustrativas de alta qualidade que demonstram{" "}
+            <strong>possibilidades de layout, ambientação e uso do espaço</strong>.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -105,6 +116,13 @@ const GallerySection = () => {
               ))}
             </div>
           </div>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-justify text-gray-500 text-[14px] mt-8 max-w-6xl mx-auto leading-relaxed">
+            🚨 <strong>Atenção:</strong> o mobiliário apresentado nas imagens não fazem parte da decoração do espaço.
+            Ele sendo utilizado como referência para o potencial de organização, iluminação e identidade que a sala pode alcançar.
+          </motion.p>
         </div>
       </motion.section>
 

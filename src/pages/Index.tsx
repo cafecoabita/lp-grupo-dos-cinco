@@ -28,7 +28,7 @@ export default function LandingPage() {
       <IdealSection /> 
 
       {/* 6. Tabela de Preços e Plano Anual */}
-      <PromoSection isBanner={false} />
+      <PromoSection />
 
       {/* 7. Depoimentos dos Clientes */}
       <ReviewsSection />

@@ -9,7 +9,7 @@ const WhatsAppFloat = () => (
     transition={{ duration: 0.5, delay: 2 }}
   >
     <motion.a
-      href="https://wa.me/553121158984/?text=Olá!+Gostaria+de+mais+informações+sobre+a+sala+Grupo+dos+Cinco."
+      href="https://wa.me/553121158984/?text=Olá!+Gostaria+de+mais+informações+sobre+a+sala+privativa+Grupo+dos+Cinco."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"

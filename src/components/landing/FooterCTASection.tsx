@@ -32,7 +32,7 @@ const FooterCTA = () => (
           }
         }}
       >
-        <Button size="lg" variant="secondary" className="text-sm px-6 py-5 font-semibold group">
+        <Button size="lg" variant="secondary" className="text-sm px-6 py-5 font-semibold group rounded-[15px]">
           Falar no WhatsApp
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>

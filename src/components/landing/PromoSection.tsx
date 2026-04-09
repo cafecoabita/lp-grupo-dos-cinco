@@ -58,7 +58,7 @@ const PromoSection = () => (
                 href={WA_ANUAL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-lg"
+                className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
                 Quero o Plano Anual
               </a>
@@ -96,7 +96,7 @@ const PromoSection = () => (
                 href={WA_BIENAL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-lg"
+                className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
                 Quero o Plano Bienal
               </a>

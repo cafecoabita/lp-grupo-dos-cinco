@@ -55,7 +55,7 @@ const HeroSection = () => (
               window.gtagSendEvent(WHATSAPP_LINK);
             }
           }}
-          className="bg-white text-primary px-8 py-4 font-bold uppercase text-sm tracking-widest hover:bg-gray-100 transition-all"
+          className="bg-white text-primary px-8 py-4 font-bold uppercase text-sm tracking-widest hover:bg-gray-100 transition-all rounded-[15px]"
         >
           Agendar Visita
         </a>

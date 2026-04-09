@@ -46,7 +46,7 @@ const DescriptionSection = () => {
                   className="group relative w-full overflow-hidden rounded-xl text-left"
                 >
                   <img
-                    src="/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-01.png"
+                    src="/lp-grupo-dos-cinco/images/sala-grupo-dos-5-01.webp"
                     alt="Layout Personalizado"
                     className="w-full h-[320px] md:h-[420px] object-contain bg-white rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
                   />
@@ -114,7 +114,7 @@ const DescriptionSection = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6"
+            className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -122,19 +122,20 @@ const DescriptionSection = () => {
           >
             <motion.button
               type="button"
-              className="absolute top-6 right-6 text-white"
+              className="absolute top-5 right-5 md:top-8 md:right-8 text-white/80 hover:text-white"
               onClick={() => setOpen(false)}
             >
-              <X className="w-7 h-7" />
+              <X className="w-8 h-8" />
             </motion.button>
 
             <motion.img
-              src="/images/sala-grupo-dos-cinco-01.png"
+              src="/lp-grupo-dos-cinco/images/sala-grupo-dos-5-01.webp"
               alt="Layout Personalizado ampliado"
-              className="max-w-full max-h-[90vh] object-contain bg-white rounded-xl p-2"
-              initial={{ scale: 0.98 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.98 }}
+              className="max-w-[90vw] max-h-[88vh] object-contain rounded-2xl shadow-2xl"
+              initial={{ scale: 0.97, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.97, opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
             />
           </motion.div>

@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { fadeUp, stagger } from "./AnimatedSection";
 
 const photos = [
   {
-    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-03.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-03.webp",
     alt: "Layout da Sala Grupo dos Cinco",
     title: "Vista geral do ambiente",
     size: "large",
   },
   {
-    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-04.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-04.webp",
     alt: "Vista interna da Sala Grupo dos Cinco",
     title: "Ambiente climatizado e mobiliado",
     size: "small",
   },
   {
-    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-05.png",
+    src: "/lp-grupo-dos-cinco/images/sala-grupo-dos-cinco-05.webp",
     alt: "Estrutura da Sala Grupo dos Cinco",
     title: "Mesa de reunião e estações de trabalho",
     size: "small",
@@ -25,13 +25,30 @@ const photos = [
 ];
 
 const GallerySection = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedAlt, setSelectedAlt] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const openImage = (src: string, alt: string) => {
-    setSelectedImage(src);
-    setSelectedAlt(alt);
-  };
+  const close = useCallback(() => setSelectedIndex(null), []);
+
+  const prev = useCallback(() => {
+    setSelectedIndex((i) => (i === null ? null : (i - 1 + photos.length) % photos.length));
+  }, []);
+
+  const next = useCallback(() => {
+    setSelectedIndex((i) => (i === null ? null : (i + 1) % photos.length));
+  }, []);
+
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [selectedIndex, close, prev, next]);
+
+  const selected = selectedIndex !== null ? photos[selectedIndex] : null;
 
   return (
     <>
@@ -59,7 +76,7 @@ const GallerySection = () => {
             Conheça a estrutura da sala por diferentes ângulos e detalhes do ambiente.
           </motion.p>
 
-          {/* Texto de apoio (mais próximo do subtítulo) */}
+          {/* Texto de apoio */}
           <motion.p
             variants={fadeUp}
             className="text-center text-gray-500 text-[14px] mb-10 max-w-4xl mx-auto leading-relaxed"
@@ -73,7 +90,7 @@ const GallerySection = () => {
             <motion.button
               type="button"
               variants={fadeUp}
-              onClick={() => openImage(photos[0].src, photos[0].alt)}
+              onClick={() => setSelectedIndex(0)}
               whileHover={{ y: -3 }}
               className="group relative overflow-hidden rounded-[22px] shadow-sm md:col-span-2"
             >
@@ -97,7 +114,7 @@ const GallerySection = () => {
                   key={index}
                   type="button"
                   variants={fadeUp}
-                  onClick={() => openImage(photo.src, photo.alt)}
+                  onClick={() => setSelectedIndex(index + 1)}
                   whileHover={{ y: -3 }}
                   className="group relative overflow-hidden rounded-[22px] shadow-sm"
                 >
@@ -126,19 +143,21 @@ const GallerySection = () => {
         </div>
       </motion.section>
 
+      {/* LIGHTBOX */}
       <AnimatePresence>
-        {selectedImage && (
+        {selected && (
           <motion.div
-            className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 z-[999] bg-black flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
+            onClick={close}
           >
+            {/* Fechar */}
             <motion.button
               type="button"
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-5 right-5 md:top-8 md:right-8 text-white/90 hover:text-white"
+              onClick={close}
+              className="absolute top-5 right-5 md:top-8 md:right-8 text-white/80 hover:text-white z-10"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -146,16 +165,61 @@ const GallerySection = () => {
               <X className="w-8 h-8" />
             </motion.button>
 
-            <motion.img
-              src={selectedImage}
-              alt={selectedAlt}
-              className="max-w-full max-h-[92vh] object-contain rounded-2xl shadow-2xl"
-              initial={{ scale: 0.96, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
-            />
+            {/* Seta anterior */}
+            <motion.button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              className="absolute left-4 md:left-8 text-white/70 hover:text-white z-10 p-2 rounded-full bg-black/30 hover:bg-black/60 transition-all"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </motion.button>
+
+            {/* Imagem */}
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={selectedIndex}
+                src={selected.src}
+                alt={selected.alt}
+                className="max-w-[90vw] max-h-[88vh] object-contain rounded-2xl shadow-2xl"
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.97 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </AnimatePresence>
+
+            {/* Seta próxima */}
+            <motion.button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              className="absolute right-4 md:right-8 text-white/70 hover:text-white z-10 p-2 rounded-full bg-black/30 hover:bg-black/60 transition-all"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <ChevronRight className="w-8 h-8" />
+            </motion.button>
+
+            {/* Indicador de posição */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              {photos.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setSelectedIndex(i); }}
+                  className={`w-2 h-2 rounded-full transition-all ${i === selectedIndex ? "bg-white scale-125" : "bg-white/40 hover:bg-white/70"}`}
+                />
+              ))}
+            </div>
+
+            {/* Legenda */}
+            <p className="absolute bottom-14 left-1/2 -translate-x-1/2 text-white/70 text-sm text-center whitespace-nowrap">
+              {selected.title}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

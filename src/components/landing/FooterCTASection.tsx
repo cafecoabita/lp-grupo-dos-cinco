@@ -11,17 +11,16 @@ declare global {
 const WHATSAPP_LINK = "https://wa.me/553121158984/?text=Olá!+Gostaria+de+agendar+uma+visita+para+sala+privativa+Grupos+dos+Cinco.+A+sala+ainda+está+disponível?+:-D";
 
 const FooterCTA = () => (
-  <AnimatedSection className="bg-primary text-primary-foreground pt-20 md:pt-28 pb-10 px-6">
+  <AnimatedSection className="bg-primary text-primary-foreground pt-10 md:pt-14 pb-10 px-6">
     <div className="max-w-3xl mx-auto text-center">
-      <p className="text-sm uppercase tracking-[0.25em] opacity-50 mb-6 font-medium">
-        Mês do Consumidor
+      <p className="font-body text-sm tracking-wide mb-4">
+        <span className="font-semibold text-yellow-400">🔥 PROMOÇÃO POR TEMPO LIMITADO 🔥</span>
       </p>
-      <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-        Garanta sua sala com
-        <span className="block">50% OFF na entrada</span>
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+        Garanta sua sala com desconto na entrada
       </h2>
-      <p className="text-lg opacity-60 mb-10 font-light">
-        Agende uma visita e conheça a Sala Suassuna pessoalmente.
+      <p className="text-sm opacity-60 mb-8 font-light">
+        Agende uma visita e conheça a Sala Grupo dos Cinco pessoalmente.
       </p>
       <a
         href={WHATSAPP_LINK}
@@ -33,14 +32,14 @@ const FooterCTA = () => (
           }
         }}
       >
-        <Button size="lg" variant="secondary" className="text-base px-8 py-6 font-semibold group">
+        <Button size="lg" variant="secondary" className="text-sm px-6 py-5 font-semibold group">
           Falar no WhatsApp
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </a>
 
-      <div className="mt-10 pt-6 border-t border-primary-foreground/10 text-sm opacity-50 space-y-1">
-        <p className="tracking-[0.2em] uppercase font-medium">Café Coabita Coworking - Todos os direitos reservados © {new Date().getFullYear()}</p>
+      <div className="mt-8 pt-5 border-t border-primary-foreground/10 text-xs opacity-40 space-y-1">
+        <p className="tracking-[0.15em] uppercase font-medium">Café Coabita Coworking — Todos os direitos reservados © {new Date().getFullYear()}</p>
       </div>
     </div>
   </AnimatedSection>

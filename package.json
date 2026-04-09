@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ViniciusMatosMKTDigital.github.io/lp-grupo-dos-cinco",
+  "homepage": "https://cafecoabita.github.io/lp-grupo-dos-cinco",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

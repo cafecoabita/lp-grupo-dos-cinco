@@ -1,44 +1,45 @@
-import { motion, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { useEffect, useRef, ReactNode } from "react";
 
-// 1. Criamos as variantes que o HeroSection está tentando buscar
-export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-};
-
-export const stagger: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+// Kept for backwards compatibility (no longer used)
+export const fadeUp = {};
+export const stagger = {};
 
 interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  id?: string; // Adicionado ID caso precise para âncoras de menu
+  id?: string;
 }
 
-// 2. O componente principal
-const AnimatedSection = ({ children, className = "", delay = 0, id }: AnimatedSectionProps) => (
-  <motion.section
-    id={id}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-80px" }}
-    variants={fadeUp}
-    transition={{ delay }}
-    className={className}
-  >
-    {children}
-  </motion.section>
-);
+const AnimatedSection = ({ children, className = "", delay = 0, id }: AnimatedSectionProps) => {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.transitionDelay = `${delay}s`;
+          el.classList.add("animate-in");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-80px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <section
+      ref={ref}
+      id={id}
+      className={`opacity-0 translate-y-10 transition-all duration-700 ease-out [&.animate-in]:opacity-100 [&.animate-in]:translate-y-0 ${className}`}
+    >
+      {children}
+    </section>
+  );
+};
 
 export default AnimatedSection;

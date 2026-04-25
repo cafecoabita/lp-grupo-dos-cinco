@@ -50,7 +50,7 @@ const PromoSection = () => (
             </div>
 
             <p className="text-xs text-muted-foreground mb-6 whitespace-nowrap">
-              *Válida para contratos fechados até 17 de abril de 2.026.
+              *Válida para contratos fechados até 30 de abril de 2.026.
             </p>
 
             <div className="mt-auto">
@@ -88,7 +88,7 @@ const PromoSection = () => (
             </div>
 
             <p className="text-xs text-muted-foreground mb-6 whitespace-nowrap">
-              *Válida para contratos fechados até 17 de abril de 2.026.
+              *Válida para contratos fechados até 30 de abril de 2.026.
             </p>
 
             <div className="mt-auto">

@@ -11,7 +11,7 @@ const WA_BIENAL = `https://wa.me/${PHONE}/?text=${encodeURIComponent("Olá, vi s
 const StarIcon = () => <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />;
 
 const PromoSection = () => (
-  <AnimatedSection className="py-20 md:py-28 px-6 bg-background">
+  <AnimatedSection id="planos" className="py-20 md:py-28 px-6 bg-background">
     <div className="max-w-4xl mx-auto text-center">
 
       <Badge className="mb-6 bg-primary text-primary-foreground text-sm px-4 py-1.5">
@@ -33,7 +33,7 @@ const PromoSection = () => (
         <Card className="relative border-2 border-black bg-background max-w-sm w-full mx-auto shadow-sm rounded-xl flex flex-col">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <Badge variant="secondary" className="flex items-center gap-1 text-xs font-bold px-3 whitespace-nowrap border border-black">
-              <StarIcon /> PLANO 1 ANO <StarIcon />
+              <StarIcon /> 1 ANO <StarIcon />
             </Badge>
           </div>
 
@@ -60,7 +60,7 @@ const PromoSection = () => (
                 rel="noopener noreferrer"
                 className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
-                Quero o Plano 1 Ano
+                Quero o plano por um ano
               </a>
             </div>
 
@@ -71,7 +71,7 @@ const PromoSection = () => (
         <Card className="relative border-2 border-black bg-background max-w-sm w-full mx-auto shadow-sm rounded-xl flex flex-col">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <Badge variant="secondary" className="flex items-center gap-1 text-xs font-bold px-3 whitespace-nowrap border border-black">
-              <StarIcon /> PLANO 2 ANOS <StarIcon />
+              <StarIcon /> 2 ANOS <StarIcon />
             </Badge>
           </div>
 
@@ -98,7 +98,7 @@ const PromoSection = () => (
                 rel="noopener noreferrer"
                 className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
-                Quero o Plano 2 Anos
+                Quero o plano por dois anos
               </a>
             </div>
 

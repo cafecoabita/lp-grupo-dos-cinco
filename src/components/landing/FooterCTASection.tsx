@@ -4,7 +4,7 @@ import AnimatedSection from "./AnimatedSection";
 
 declare global {
   interface Window {
-    gtagSendEvent?: (url: string) => void;
+    gtagSendEvent?: (url: string, eventName?: string) => void;
   }
 }
 
@@ -26,9 +26,12 @@ const FooterCTA = () => (
         href={WHATSAPP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           if (typeof window.gtagSendEvent === "function") {
-            window.gtagSendEvent(WHATSAPP_LINK);
+            window.gtagSendEvent(WHATSAPP_LINK, 'contato_sala_grupo_dos_5');
+          } else {
+            window.open(WHATSAPP_LINK, '_blank');
           }
         }}
       >

@@ -3,6 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Car } from "lucide-react";
 
+declare global {
+  interface Window {
+    gtagSendEvent?: (url: string, eventName?: string) => void;
+  }
+}
+
 const PHONE = "553121158984";
 
 const WA_ANUAL = `https://wa.me/${PHONE}/?text=${encodeURIComponent("Olá, vi seu anúncio no Google e gostaria de saber mais sobre o plano de 1 ano da sala Grupo dos Cinco")}`;
@@ -50,7 +56,7 @@ const PromoSection = () => (
             </div>
 
             <p className="text-xs text-muted-foreground mb-6 whitespace-nowrap">
-              *Válida para contratos fechados até 30 de abril de 2.026.
+              *Válida para contratos fechados até 23 de maio de 2026.
             </p>
 
             <div className="mt-auto">
@@ -58,6 +64,14 @@ const PromoSection = () => (
                 href={WA_ANUAL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof window.gtagSendEvent === 'function') {
+                    window.gtagSendEvent(WA_ANUAL, 'contato_plano_anual');
+                  } else {
+                    window.open(WA_ANUAL, '_blank');
+                  }
+                }}
                 className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
                 Quero o plano por um ano
@@ -88,7 +102,7 @@ const PromoSection = () => (
             </div>
 
             <p className="text-xs text-muted-foreground mb-6 whitespace-nowrap">
-              *Válida para contratos fechados até 30 de abril de 2.026.
+              *Válida para contratos fechados até 23 de maio de 2026.
             </p>
 
             <div className="mt-auto">
@@ -96,6 +110,14 @@ const PromoSection = () => (
                 href={WA_BIENAL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (typeof window.gtagSendEvent === 'function') {
+                    window.gtagSendEvent(WA_BIENAL, 'contato_plano_bienal');
+                  } else {
+                    window.open(WA_BIENAL, '_blank');
+                  }
+                }}
                 className="block w-full bg-primary text-primary-foreground px-6 py-3 font-bold uppercase text-sm tracking-widest border-2 border-transparent hover:bg-white hover:text-primary hover:border-primary transition-all rounded-[15px]"
               >
                 Quero o plano por dois anos

@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://cafecoabita.github.io/lp-grupo-dos-cinco/sitemap.xml

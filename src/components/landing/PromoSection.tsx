@@ -3,12 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Car } from "lucide-react";
 
-declare global {
-  interface Window {
-    gtagSendEvent?: (url: string, eventName?: string) => void;
-  }
-}
-
 const PHONE = "553121158984";
 
 const WA_ANUAL = `https://wa.me/${PHONE}/?text=${encodeURIComponent("Olá, vi seu anúncio no Google e gostaria de saber mais sobre o plano de 1 ano da sala Grupo dos Cinco")}`;

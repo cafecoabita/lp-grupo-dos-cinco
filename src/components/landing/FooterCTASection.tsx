@@ -2,13 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
-declare global {
-  interface Window {
-    gtagSendEvent?: (url: string, eventName?: string) => void;
-  }
-}
-
-const WHATSAPP_LINK = "https://wa.me/553121158984/?text=Olá!+Gostaria+de+agendar+uma+visita+para+sala+privativa+Grupos+dos+Cinco.+A+sala+ainda+está+disponível?+:-D";
+const WHATSAPP_LINK = "https://wa.me/553121158984/?text=Olá!+Gostaria+de+agendar+uma+visita+para+sala+privativa+Grupo+dos+Cinco.+A+sala+ainda+está+disponível?+:-D";
 
 const FooterCTA = () => (
   <AnimatedSection className="bg-primary text-primary-foreground pt-10 md:pt-14 pb-10 px-6">

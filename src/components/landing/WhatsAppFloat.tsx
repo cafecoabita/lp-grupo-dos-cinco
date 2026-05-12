@@ -1,9 +1,3 @@
-declare global {
-  interface Window {
-    gtagSendEvent?: (url: string, eventName?: string) => void;
-  }
-}
-
 const WHATSAPP_LINK = "https://wa.me/553121158984/?text=Olá!+Gostaria+de+mais+informações+sobre+a+sala+privativa+Grupo+dos+Cinco.";
 
 const WhatsAppFloat = () => (
